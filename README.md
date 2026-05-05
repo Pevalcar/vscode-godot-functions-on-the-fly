@@ -60,6 +60,14 @@ Si prefieres editar JSON, abre `Keyboard Shortcuts (JSON)` y añade algo como es
    - `npm run compile`
 3. Abre este proyecto en VS Code y presiona `F5` para lanzar Extension Development Host.
 
+## Instalación manual
+
+Si prefieres instalar la extensión sin compilarla, puedes descargar el archivo `.vsix` desde la página de releases:
+
+- https://github.com/Pevalcar/vscode-godot-functions-on-the-fly/releases/tag/0.0.1
+
+Después, en VS Code usa `Extensions: Install from VSIX...` y selecciona el archivo descargado.
+
 ## Publicación
 
 1. Verifica que todo compile y pase pruebas:
