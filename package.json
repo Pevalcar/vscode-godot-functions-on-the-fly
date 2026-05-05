@@ -1,0 +1,83 @@
+{
+  "name": "godot-functions-on-the-fly",
+  "displayName": "Godot Functions On The Fly",
+  "description": "Create missing GDScript callbacks and getter/setter methods directly from VS Code, only for Godot projects.",
+  "version": "0.0.1",
+  "publisher": "pevalcar",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.92.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Other"
+  ],
+  "keywords": [
+    "godot",
+    "gdscript",
+    "getter",
+    "setter",
+    "codegen"
+  ],
+  "activationEvents": [
+    "onLanguage:gdscript",
+    "onLanguage:gdscript3",
+    "onCommand:godotFunctionsOnTheFly.createFunction",
+    "onCommand:godotFunctionsOnTheFly.createGetterSetter"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "godotFunctionsOnTheFly.createFunction",
+        "title": "Godot: Create Function On The Fly"
+      },
+      {
+        "command": "godotFunctionsOnTheFly.createGetterSetter",
+        "title": "Godot: Create Getter/Setter On The Fly"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "godotFunctionsOnTheFly.createFunction",
+          "when": "editorTextFocus && (resourceLangId == gdscript || resourceLangId == gdscript3)",
+          "group": "navigation@99"
+        },
+        {
+          "command": "godotFunctionsOnTheFly.createGetterSetter",
+          "when": "editorTextFocus && (resourceLangId == gdscript || resourceLangId == gdscript3)",
+          "group": "navigation@99"
+        }
+      ]
+    },
+    "keybindings": [
+      {
+        "command": "godotFunctionsOnTheFly.createFunction",
+        "key": "ctrl+[",
+        "mac": "cmd+[",
+        "when": "editorTextFocus && (resourceLangId == gdscript || resourceLangId == gdscript3)"
+      },
+      {
+        "command": "godotFunctionsOnTheFly.createGetterSetter",
+        "key": "ctrl+'",
+        "mac": "cmd+'",
+        "when": "editorTextFocus && (resourceLangId == gdscript || resourceLangId == gdscript3)"
+      }
+    ]
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "test": "npm run compile && node --test out/test/godotCodegen.test.js",
+    "package": "vsce package",
+    "publish": "vsce publish",
+    "vscode:prepublish": "npm run compile"
+  },
+  "devDependencies": {
+    "@vscode/vsce": "^3.6.2",
+    "@types/node": "^20.14.15",
+    "@types/vscode": "^1.92.0",
+    "typescript": "^5.5.4"
+  }
+}
